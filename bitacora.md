@@ -23,3 +23,82 @@ Hay una venta con cantidad 0, así que no la contaré como una venta válida al 
 
 **3. Clientes repetidos:**  
 Algunos clientes aparecen varias veces, pero no es un error, porque pueden comprar en diferentes días. Por eso, conservaré todos los registros.
+
+### Pseudocódigo - Total vendido
+
+1. Recibir el arreglo de ventas.
+2. Crear una variable total que comience en 0.
+3. Recorrer todas las ventas.
+4. Multiplicar la cantidad por el precio de cada venta.
+5. Sumar el resultado al total.
+6. Devolver el dinero total vendido.
+
+Resultado esperado: $985.000.
+
+### Pseudocódigo - Venta mayor
+
+1. Recibir el arreglo de ventas.
+2. Crear una variable para guardar la venta mayor, inicialmente sin valor (`null`).
+3. Recorrer cada venta.
+4. Calcular su valor multiplicando la cantidad por el precio.
+5. Comparar el resultado con la venta mayor guardada.
+6. Si la venta actual es mayor, reemplazar la anterior.
+7. Al terminar, devolver la venta con el valor más alto.
+
+**Caso borde:** Si no hay ventas, devolver `null`.
+
+### Pseudocódigo - Ticket promedio
+
+1. Recibir el arreglo de ventas.
+2. Crear dos variables en cero: una para el dinero total y otra para contar las ventas válidas.
+3. Recorrer todas las ventas.
+4. Si la cantidad es mayor que cero, sumar su valor al total y aumentar el contador.
+5. Si no hay ventas válidas, devolver cero.
+6. Dividir el dinero total entre las ventas válidas.
+7. Devolver el promedio.
+
+**Resultado esperado:** $89.545,45 aproximadamente.
+
+**Caso borde:** Si no hay ventas válidas, el resultado será 0 para evitar una división entre cero.
+
+### Pseudocódigo - Ventas por ciudad
+
+1. Recibir el arreglo de ventas y el nombre de la ciudad.
+2. Crear una variable total que empiece en cero.
+3. Recorrer todas las ventas.
+4. Comparar las ciudades ignorando mayúsculas y espacios.
+5. Si la ciudad coincide, sumar el valor de esa venta.
+6. Devolver el total vendido en la ciudad.
+
+**Caso borde:** Si la ciudad no tiene ventas, devolver cero.
+
+**Prueba manual:**
+
+| Venta | Ciudad   | Valor   | Total acumulado |
+|---    |---       |---:     |---:             |
+| 1     | Medellín | $84.000 | $84.000         |
+| 4     | Medellín | $42.000 | $126.000        |
+| 5     | medellín | $135.000| $261.000        |
+| 11    | Medellín | $95.000 | $356.000        |
+
+**Resultado:** Medellín tiene un total vendido de $356.000.
+
+### Pruebas y casos borde
+
+Probé las funciones con las 12 ventas, con una sola venta y con un arreglo vacío.
+
+Cuando el arreglo está vacío, las funciones que calculan totales devuelven 0, porque no hay ventas para sumar.
+
+La función que busca la venta mayor devuelve `null`, ya que no existe ningún registro para comparar.
+
+Para el ticket promedio, decidí devolver 0 cuando no hay ventas válidas, evitando una división entre cero.
+
+También comprobé que las ciudades se comparan sin importar las mayúsculas o los espacios sobrantes.
+
+### Resultados principales
+
+- Total vendido: $985.000.
+- Unidades vendidas: 21.
+- Venta mayor: ID 10, por $168.000.
+- Ticket promedio: $89.545,45.
+- Ventas en Medellín: $356.000.
