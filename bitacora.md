@@ -102,3 +102,49 @@ También comprobé que las ciudades se comparan sin importar las mayúsculas o l
 - Venta mayor: ID 10, por $168.000.
 - Ticket promedio: $89.545,45.
 - Ventas en Medellín: $356.000.
+
+## MiniReto 3: Del ciclo al método
+
+### Total vendido con métodos
+
+Recorro todas las ventas utilizando `reduce()`. Calculo el valor de cada venta y lo voy sumando para obtener el dinero total vendido.
+
+**Resultado esperado:** $985.000.
+
+### Unidades vendidas con métodos
+
+Recorro las ventas utilizando `reduce()` y sumo la cantidad de productos vendidos.
+
+**Resultado esperado:** 21 unidades.
+
+### Decisiones
+
+En estas funciones no necesito filtrar ni agrupar los datos, porque quiero sumar la información de todas las ventas.
+
+Utilizo `valorVenta()` para calcular el dinero generado por cada venta y así evitar repetir la multiplicación.
+
+### Verificación de funciones
+
+Comparé las funciones que hice con ciclos `for...of` con las nuevas funciones que utilizan métodos de arreglos.
+
+Utilicé los mismos datos para comprobar que los resultados fueran iguales.
+
+**Resultados esperados:**
+
+- Total vendido: OK.
+- Unidades vendidas: OK.
+- Ventas por ciudad: OK.
+
+De esta manera puedo comprobar que las nuevas funciones realizan los mismos cálculos que las anteriores.
+
+### Agrupaciones y rankings
+
+**Total por ciudad:** Utilicé `reduce()` para agrupar las ventas por ciudad y sumar el dinero de cada una. También normalicé los nombres para evitar ciudades duplicadas.
+
+**Unidades por producto:** Recorrí las ventas y agrupé los productos para sumar sus cantidades. No necesité filtrar ni transformar los registros antes de acumularlos.
+
+**Top de productos:** Agrupé los productos y calculé cuánto dinero generó cada uno. Después utilicé `Object.entries()`, `sort()` y `slice()` para ordenarlos y seleccionar los primeros. Finalmente, con `map()` obtuve solamente sus nombres.
+
+**Decisión:** Conservé el arreglo original sin modificar su orden.
+
+**Resultados:** El producto con más unidades vendidas fue Origen Huila 500 g, con 7 unidades. También fue el que más dinero generó, con $294.000.

@@ -83,6 +83,94 @@ function ventasPorCiudad(ventas, ciudad) {
 
     return total;
 }
+
+function totalVendidoM(ventas) {
+
+    return ventas.reduce((acumulador, venta) => {
+        return acumulador + valorVenta(venta);
+    }, 0);
+
+}
+
+function unidadesVendidasM(ventas) {
+
+    return ventas.reduce((acumulador, venta) => {
+        return acumulador + venta.cantidad;
+    }, 0);
+
+}
+
+function ventasPorCiudadM(ventas, ciudad) {
+
+    const ventasFiltradas = ventas.filter((venta) => {
+        return venta.ciudad.trim().toLowerCase() === ciudad.trim().toLowerCase();
+    });
+
+    const total = ventasFiltradas.reduce((acumulador, venta) => {
+        return acumulador + valorVenta(venta);
+    }, 0);
+
+    return total;
+}
+
+function totalPorCiudad(ventas) {
+
+    return ventas.reduce((totales, venta) => {
+
+        const ciudad = venta.ciudad.trim().toLowerCase();
+
+        if (totales[ciudad] === undefined) {
+            totales[ciudad] = 0;
+        }
+
+        totales[ciudad] = totales[ciudad] + valorVenta(venta);
+
+        return totales;
+
+    }, {});
+}
+
+function unidadesPorProducto(ventas) {
+
+    return ventas.reduce((totales, venta) => {
+
+        const producto = venta.producto;
+
+        if (totales[producto] === undefined) {
+            totales[producto] = 0;
+        }
+
+        totales[producto] += venta.cantidad;
+
+        return totales;
+
+    }, {});
+}
+
+function topProductosPorValor(ventas, k) {
+
+    const totales = ventas.reduce((acumulador, venta) => {
+
+        const producto = venta.producto;
+
+        if (acumulador[producto] === undefined) {
+            acumulador[producto] = 0;
+        }
+
+        acumulador[producto] += valorVenta(venta);
+
+        return acumulador;
+
+    }, {});
+
+    const ranking = Object.entries(totales);
+
+    const ordenados = [...ranking].sort((a, b) => b[1] - a[1]);
+
+    const primeros = ordenados.slice(0, k);
+
+    return primeros.map((producto) => producto[0]);
+}
 console.log("Ventas Medellín:", ventasPorCiudad(ventas, "Medellín"));
 
 console.log("Ventas Bogotá:", ventasPorCiudad(ventas, "Bogotá"));
@@ -98,5 +186,14 @@ module.exports = {
     totalVendido,
     ventaMayor,
     ticketPromedio,
-    ventasPorCiudad
+    ventasPorCiudad,
+    totalVendidoM,
+    unidadesVendidasM,
+    ventasPorCiudadM,
+    totalPorCiudad,
+    unidadesPorProducto,
+    topProductosPorValor
 };
+
+
+
