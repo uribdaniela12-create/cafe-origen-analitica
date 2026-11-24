@@ -179,6 +179,14 @@ console.log("Ventas Cali:", ventasPorCiudad(ventas, "Cali"));
 
 console.log("Ventas Pereira:", ventasPorCiudad(ventas, "Pereira"));
 
+function ventasDelDia(ventas, fecha) {
+
+    return ventas.filter((venta) => {
+        return venta.fecha === fecha;
+    });
+
+}
+
 
 module.exports = {
     valorVenta,
@@ -192,7 +200,8 @@ module.exports = {
     ventasPorCiudadM,
     totalPorCiudad,
     unidadesPorProducto,
-    topProductosPorValor
+    topProductosPorValor,
+    ventasDelDia
 };
 
 

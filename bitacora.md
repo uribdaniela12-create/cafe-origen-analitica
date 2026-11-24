@@ -148,3 +148,39 @@ De esta manera puedo comprobar que las nuevas funciones realizan los mismos cál
 **Decisión:** Conservé el arreglo original sin modificar su orden.
 
 **Resultados:** El producto con más unidades vendidas fue Origen Huila 500 g, con 7 unidades. También fue el que más dinero generó, con $294.000.
+
+## MiniReto 4: Analítica v0.1
+
+### Error 1: Ciudades duplicadas
+
+**Síntoma:** Una misma ciudad puede aparecer dos veces en el reporte.
+
+**Entrada:** Ventas registradas como "Medellín" y "medellín".
+
+**Hipótesis:** El programa interpreta los nombres como ciudades diferentes.
+
+**Prueba:** Comparar los nombres originales y después normalizarlos.
+
+**Causa:** Las diferencias entre mayúsculas, minúsculas y espacios.
+
+**Corrección:** Utilizar `trim()` y `toLowerCase()` antes de agrupar las ventas.
+
+### Error 2: Ticket promedio NaN
+
+**Síntoma:** El promedio puede mostrar `NaN` cuando no hay ventas.
+
+**Entrada:** Un arreglo vacío.
+
+**Hipótesis:** El programa intenta dividir entre cero.
+
+**Prueba:** Ejecutar `ticketPromedio([])`.
+
+**Causa:** No hay ventas válidas para realizar la división.
+
+**Corrección:** Comprobar que el contador sea mayor que cero. Si no hay ventas válidas, devolver 0.
+
+### Resultado
+
+El reporte permite consultar las ventas generales, los totales por ciudad, las unidades por producto y los productos que más dinero generaron.
+
+También permite consultar fechas específicas sin generar errores cuando no existen ventas.
